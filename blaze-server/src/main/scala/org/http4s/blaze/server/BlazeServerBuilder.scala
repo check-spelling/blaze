@@ -240,7 +240,7 @@ class BlazeServerBuilder[F[_]] private (
     copy(selectorThreadFactory = selectorThreadFactory)
 
   @deprecated("This operation is a no-op. WebSockets are always enabled.", "0.23")
-  def withWebSockets(enableWebsockets: Boolean): Self =
+  def withWebSockets(enableWebSockets: Boolean): Self =
     this
 
   def enableHttp2(enabled: Boolean): Self = copy(http2Support = enabled)

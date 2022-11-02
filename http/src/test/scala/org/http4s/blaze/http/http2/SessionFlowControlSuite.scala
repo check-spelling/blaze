@@ -28,7 +28,7 @@ class SessionFlowControlSuite extends BlazeTestSuite {
     var streamThatConsumed: StreamFlowWindow = null
     var streamConsumed: Int = 0
 
-    override protected def onSessonBytesConsumed(consumed: Int): Unit =
+    override protected def onSessionBytesConsumed(consumed: Int): Unit =
       this.sessionConsumed = consumed
 
     override protected def onStreamBytesConsumed(stream: StreamFlowWindow, consumed: Int): Unit = {

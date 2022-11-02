@@ -36,7 +36,7 @@ private[blaze] abstract class Actor[M](
   // Keep the tail of the chain
   private[this] val tailNode = new AtomicReference[Node]()
   // keep a reusable runner around, no need to make more garbage on every actor startup
-  private[this] val runner = new RecycleableRunnable(null)
+  private[this] val runner = new RecyclableRunnable(null)
 
   /** The canonical message handling function */
   protected def act(message: M): Unit
@@ -62,7 +62,7 @@ private[blaze] abstract class Actor[M](
   }
 
   private[this] class Node(val m: M) extends AtomicReference[Node]
-  private[this] class RecycleableRunnable(@volatile var start: Node) extends Runnable {
+  private[this] class RecyclableRunnable(@volatile var start: Node) extends Runnable {
     override def run(): Unit = {
       @tailrec
       def go(i: Int, next: Node): Unit =
