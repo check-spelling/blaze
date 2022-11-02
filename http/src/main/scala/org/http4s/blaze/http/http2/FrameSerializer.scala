@@ -305,7 +305,7 @@ private[http2] object FrameSerializer {
       length: Int,
       frameType: Byte,
       flags: Byte,
-      streamdId: Int,
+      streamId: Int,
       buffer: ByteBuffer
   ): Unit = {
     buffer
@@ -314,7 +314,7 @@ private[http2] object FrameSerializer {
       .put((length & 0xff).toByte)
       .put(frameType)
       .put(flags)
-      .putInt(streamdId & Masks.STREAMID)
+      .putInt(streamId & Masks.STREAMID)
     ()
   }
 }
