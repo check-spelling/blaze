@@ -34,7 +34,7 @@ private class SessionFlowControlImpl(
   private[this] var _sessionUnconsumedInbound: Int = 0
 
   // exposed for testing
-  protected def onSessonBytesConsumed(consumed: Int): Unit = {
+  protected def onSessionBytesConsumed(consumed: Int): Unit = {
     val _ = consumed
     val sessionUpdate = flowStrategy.checkSession(this)
     if (0 < sessionUpdate) {
@@ -135,7 +135,7 @@ private class SessionFlowControlImpl(
       throw new IllegalStateException(msg)
     } else if (count > 0) {
       _sessionUnconsumedInbound -= count
-      onSessonBytesConsumed(count)
+      onSessionBytesConsumed(count)
     }
   }
 
@@ -262,7 +262,7 @@ private class SessionFlowControlImpl(
         _streamUnconsumedInbound -= count
         _sessionUnconsumedInbound -= count
 
-        onSessonBytesConsumed(count)
+        onSessionBytesConsumed(count)
         onStreamBytesConsumed(this, count)
       }
     }

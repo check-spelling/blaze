@@ -34,7 +34,7 @@ class StreamStateImplSuite extends BlazeTestSuite {
 
       override lazy val sessionFlowControl: SessionFlowControl =
         new ObservingSessionFlowControl(this) {
-          override protected def onSessonBytesConsumed(consumed: Int): Unit = {
+          override protected def onSessionBytesConsumed(consumed: Int): Unit = {
             sessionConsumed += consumed
             ()
           }
